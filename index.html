@@ -3,57 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xis do Aurélio - Cardápio Digital</title>
+    <title>Xis do Aurélio - Cardápio Digital Premium</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: #f4f5f7; color: #333; padding-bottom: 100px; }
-        header { background: #e63946; color: white; text-align: center; padding: 35px 20px; border-bottom: 6px solid #ffb703; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        header h1 { font-size: 28px; margin-bottom: 5px; }
-        header p { font-size: 14px; opacity: 0.9; }
-        .status { display: inline-block; background: #2a9d8f; color: white; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: bold; margin-top: 12px; }
+        body { background-color: #f8f9fa; color: #333; padding-bottom: 110px; }
+        
+        /* Cabeçalho Profissional */
+        header { background: linear-gradient(135deg, #e63946 0%, #c32f3a 100%); color: white; text-align: center; padding: 40px 20px; border-bottom: 6px solid #ffb703; box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
+        header h1 { font-size: 32px; font-weight: 800; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        header p { font-size: 14px; opacity: 0.9; margin-top: 5px; }
+        .status { display: inline-block; background: #2a9d8f; color: white; padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: bold; margin-top: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        
+        /* Container e Categorias */
         .container { max-width: 600px; margin: 20px auto; padding: 0 15px; }
-        .categoria-titulo { font-size: 20px; font-weight: bold; color: #e63946; border-left: 5px solid #ffb703; padding-left: 10px; margin: 30px 0 15px 0; }
-        .produto { background: white; border-radius: 12px; padding: 18px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px rgba(0,0,0,0.03); border: 1px solid #ebedf0; }
+        .categoria-titulo { font-size: 22px; font-weight: 800; color: #e63946; border-left: 6px solid #ffb703; padding-left: 12px; margin: 35px 0 18px 0; text-transform: uppercase; letter-spacing: 0.5px; }
+        
+        /* Card de Produto Premium */
+        .produto { background: white; border-radius: 14px; padding: 20px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 12px rgba(0,0,0,0.04); border: 1px solid #edf2f7; transition: 0.2s; }
+        .produto:active { transform: scale(0.99); }
         .detalhes { flex: 1; padding-right: 15px; }
-        .nome { font-weight: bold; font-size: 17px; margin-bottom: 4px; color: #2b2d42; }
-        .descricao { font-size: 13px; color: #6c757d; line-height: 1.4; }
-        .preco { font-weight: bold; color: #2a9d8f; font-size: 16px; margin-top: 8px; }
-        .controle { display: flex; align-items: center; gap: 12px; background: #f8f9fa; padding: 6px 12px; border-radius: 30px; border: 1px solid #dee2e6; }
-        .btn-qtd { background: #e63946; color: white; border: none; width: 28px; height: 28px; border-radius: 50%; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .nome { font-weight: bold; font-size: 18px; margin-bottom: 4px; color: #1a1a1a; }
+        .descricao { font-size: 13px; color: #667085; line-height: 1.4; }
+        .preco { font-weight: 800; color: #2a9d8f; font-size: 18px; margin-top: 10px; }
+        
+        /* Controles de Quantidade */
+        .controle { display: flex; align-items: center; gap: 14px; background: #f1f3f5; padding: 8px 14px; border-radius: 30px; border: 1px solid #e9ecef; }
+        .btn-qtd { background: #e63946; color: white; border: none; width: 32px; height: 32px; border-radius: 50%; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold; transition: 0.1s; }
         .btn-qtd:active { background: #b71c1c; }
-        .qtd { font-weight: bold; min-width: 20px; text-align: center; font-size: 15px; }
+        .qtd { font-weight: bold; min-width: 22px; text-align: center; font-size: 16px; color: #212529; }
         
-        /* Seção do Formulário de Entrega */
-        .secao-cadastro { background: white; border-radius: 12px; padding: 20px; margin-top: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.03); border: 1px solid #ebedf0; }
-        .secao-cadastro h3 { margin-bottom: 15px; color: #2b2d42; border-bottom: 2px solid #f4f5f7; padding-bottom: 8px; }
-        .campo { margin-bottom: 15px; }
-        .campo label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; color: #495057; }
-        .campo input, .campo select { width: 100%; padding: 10px 12px; border: 1px solid #ced4da; border-radius: 8px; font-size: 14px; outline: none; transition: 0.2s; }
-        .campo input:focus, .campo select:focus { border-color: #e63946; box-shadow: 0 0 0 3px rgba(230,57,70,0.1); }
-        
-        /* Resumo flutuante e botão */
-        footer { position: fixed; bottom: 0; left: 0; right: 0; background: white; padding: 15px; box-shadow: 0 -4px 12px rgba(0,0,0,0.08); display: flex; flex-direction: column; align-items: center; gap: 10px; }
-        .resumo-total { font-size: 16px; font-weight: bold; color: #2b2d42; }
-        .btn-enviar { background: #25D366; color: white; border: none; padding: 14px 30px; border-radius: 30px; font-size: 16px; font-weight: bold; width: 100%; max-width: 500px; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(37,211,102,0.3); transition: 0.2s; }
-        .btn-enviar:active { background: #128C7E; transform: scale(0.98); }
+        /* Rodapé Fixo */
+        footer { position: fixed; bottom: 0; left: 0; right: 0; background: white; padding: 20px; box-shadow: 0 -5px 20px rgba(0,0,0,0.08); display: flex; flex-direction: column; align-items: center; gap: 12px; z-index: 999; }
+        .resumo-total { font-size: 18px; font-weight: 800; color: #1a1a1a; }
+        .btn-avancar { background: #e63946; color: white; border: none; padding: 16px 30px; border-radius: 30px; font-size: 17px; font-weight: bold; width: 100%; max-width: 500px; cursor: pointer; text-align: center; text-decoration: none; box-shadow: 0 4px 15px rgba(230,57,70,0.4); transition: 0.2s; display: block; }
+        .btn-avancar:active { transform: scale(0.97); background: #b71c1c; }
     </style>
 </head>
 <body>
 
     <header>
         <h1>🍔 Xis do Aurélio</h1>
-        <p>Av. Plácido Mottin, 2896 - Parque Índio Jari, Viamão</p>
-        <span class="status">🟢 Recebendo Pedidos</span>
+        <p>📍 Av. Plácido Mottin, 2896 - Parque Índio Jari, Viamão</p>
+        <span class="status">🟢 Faça seu Pedido Online</span>
     </header>
 
     <div class="container">
+        
+        <!-- CATEGORIA: COMBOS -->
+        <div class="categoria-titulo">🎁 Combos Promocionais</div>
+        
+        <div class="produto">
+            <div class="detalhes">
+                <div class="nome">Combo Casal</div>
+                <div class="descricao">2 Xis Salada Tradicionais + 1 Porção de Batata Frita Média + 1 Coca-Cola 2 Litros.</div>
+                <div class="preco">R$ 58,00</div>
+            </div>
+            <div class="controle">
+                <button class="btn-qtd" onclick="alterarQtd('combo_casal', -1)">-</button>
+                <span class="qtd" id="combo_casal">0</span>
+                <button class="btn-qtd" onclick="alterarQtd('combo_casal', 1)">+</button>
+            </div>
+        </div>
+
         <!-- CATEGORIA: XIS -->
-        <div class="categoria-titulo">Os Famosos Xis</div>
+        <div class="categoria-titulo">🍔 Os Famosos Xis Gaúchos</div>
         
         <div class="produto">
             <div class="detalhes">
                 <div class="nome">Xis Salada</div>
-                <div class="descricao">Hambúrguer, maionese artesanal, alface, tomate, milho, ervilha e muito queijo.</div>
+                <div class="descricao">Hambúrguer, maionese da casa, alface, tomate, milho, ervilha e queijo derretido no capricho.</div>
                 <div class="preco">R$ 22,00</div>
             </div>
             <div class="controle">
@@ -65,9 +83,22 @@
 
         <div class="produto">
             <div class="detalhes">
-                <div class="nome">Xis Tudo</div>
-                <div class="descricao">Iscas de carne, frango, bacon, ovo, queijo, maionese, salada, milho e ervilha.</div>
-                <div class="preco">R$ 28,00</div>
+                <div class="nome">Xis Bacon</div>
+                <div class="descricao">Muito bacon em cubos crocantes, hambúrguer, ovo, queijo, maionese, alface e tomate.</div>
+                <div class="preco">R$ 26,00</div>
+            </div>
+            <div class="controle">
+                <button class="btn-qtd" onclick="alterarQtd('xis_bacon', -1)">-</button>
+                <span class="qtd" id="xis_bacon">0</span>
+                <button class="btn-qtd" onclick="alterarQtd('xis_bacon', 1)">+</button>
+            </div>
+        </div>
+
+        <div class="produto">
+            <div class="detalhes">
+                <div class="nome">Xis Tudo (O Brabo)</div>
+                <div class="descricao">Iscas de carne, frango, bacon, ovo, coração, queijo, maionese, milho e ervilha. Gigante!</div>
+                <div class="preco">R$ 32,00</div>
             </div>
             <div class="controle">
                 <button class="btn-qtd" onclick="alterarQtd('xis_tudo', -1)">-</button>
@@ -76,8 +107,24 @@
             </div>
         </div>
 
+        <!-- CATEGORIA: PORÇÕES -->
+        <div class="categoria-titulo">🍟 Porções Extras</div>
+
+        <div class="produto">
+            <div class="detalhes">
+                <div class="nome">Batata Frita Grande</div>
+                <div class="descricao">Porção de 500g de batata frita bem crocante e sequinha acompanhada de maionese.</div>
+                <div class="preco">R$ 18,00</div>
+            </div>
+            <div class="controle">
+                <button class="btn-qtd" onclick="alterarQtd('batata_g', -1)">-</button>
+                <span class="qtd" id="batata_g">0</span>
+                <button class="btn-qtd" onclick="alterarQtd('batata_g', 1)">+</button>
+            </div>
+        </div>
+
         <!-- CATEGORIA: BEBIDAS -->
-        <div class="categoria-titulo">Bebidas Gelas</div>
+        <div class="categoria-titulo">🥤 Bebidas Geladas</div>
 
         <div class="produto">
             <div class="detalhes">
@@ -92,50 +139,34 @@
             </div>
         </div>
 
-        <!-- DADOS DE ENTREGA (O diferencial de R$ 800) -->
-        <div class="secao-cadastro">
-            <h3>📍 Dados de Entrega</h3>
-            <div class="campo">
-                <label for="nome_cliente">Seu Nome:</label>
-                <input type="text" id="nome_cliente" placeholder="Ex: João Silva">
+        <div class="produto">
+            <div class="detalhes">
+                <div class="nome">Guaraná 2 Litros</div>
+                <div class="descricao">Refrigerante Guaraná Antarctica tamanho família bem gelado.</div>
+                <div class="preco">R$ 10,00</div>
             </div>
-            <div class="campo">
-                <label for="bairro_cliente">Seu Bairro (Taxa de Entrega):</label>
-                <select id="bairro_cliente" onchange="atualizarTotalGeral()">
-                    <option value="" data-taxa="0">Selecione seu bairro...</option>
-                    <option value="Parque Índio Jari" data-taxa="5.00">Parque Índio Jari (R$ 5,00)</option>
-                    <option value="Vila Universal" data-taxa="7.00">Vila Universal (R$ 7,00)</option>
-                    <option value="Planalto" data-taxa="8.00">Planalto (R$ 8,00)</option>
-                    <option value="Centro Viamão" data-taxa="10.00">Centro (R$ 10,00)</option>
-                </select>
-            </div>
-            <div class="campo">
-                <label for="end_cliente">Endereço e Número:</label>
-                <input type="text" id="end_cliente" placeholder="Ex: Rua Flores, 123">
-            </div>
-            <div class="campo">
-                <label for="pgto_cliente">Forma de Pagamento:</label>
-                <select id="pgto_cliente">
-                    <option value="Pix">Pix</option>
-                    <option value="Cartão de Crédito/Débito">Cartão (Levar maquininha)</option>
-                    <option value="Dinheiro">Dinheiro</option>
-                </select>
+            <div class="controle">
+                <button class="btn-qtd" onclick="alterarQtd('refri_2l', -1)">-</button>
+                <span class="qtd" id="refri_2l">0</span>
+                <button class="btn-qtd" onclick="alterarQtd('refri_2l', 1)">+</button>
             </div>
         </div>
     </div>
 
     <footer>
-        <div class="resumo-total" id="total_geral">Total dos Lanches: R$ 0,00</div>
-        <button class="btn-enviar" onclick="enviarPedido()">
-            💬 Enviar Pedido Completo
-        </button>
+        <div class="resumo-total" id="total_lanches">Total Selecionado: R$ 0,00</div>
+        <button class="btn-avancar" onclick="irParaPedido()">🛒 Avançar para o Pedido</button>
     </footer>
 
     <script>
         const itens = {
+            combo_casal: { nome: "Combo Casal", preco: 58.00, qtd: 0 },
             xis_salada: { nome: "Xis Salada", preco: 22.00, qtd: 0 },
-            xis_tudo: { nome: "Xis Tudo", preco: 28.00, qtd: 0 },
-            coca_lata: { nome: "Coca-Cola Lata", preco: 6.00, qtd: 0 }
+            xis_bacon: { nome: "Xis Bacon", preco: 26.00, qtd: 0 },
+            xis_tudo: { nome: "Xis Tudo", preco: 32.00, qtd: 0 },
+            batata_g: { nome: "Batata Frita Grande", preco: 18.00, qtd: 0 },
+            coca_lata: { nome: "Coca-Cola Lata", preco: 6.00, qtd: 0 },
+            refri_2l: { nome: "Guaraná 2 Litros", preco: 10.00, qtd: 0 }
         };
 
         function alterarQtd(id, valor) {
@@ -143,40 +174,20 @@
             item.qtd += valor;
             if (item.qtd < 0) item.qtd = 0;
             document.getElementById(id).innerText = item.qtd;
-            atualizarTotalGeral();
-        }
-
-        function calcularSubtotal() {
+            
             let total = 0;
-            for (let id in itens) {
-                total += itens[id].qtd * itens[id].preco;
-            }
-            return total;
+            for (let k in itens) { total += itens[k].qtd * itens[k].preco; }
+            document.getElementById("total_lanches").innerText = `Total Selecionado: R$ ${total.toFixed(2)}`;
         }
 
-        function atualizarTotalGeral() {
-            let subtotal = calcularSubtotal();
-            let selectBairro = document.getElementById("bairro_cliente");
-            let taxa = 0;
+        function irParaPedido() {
+            let temItens = false;
+            for (let id in itens) { if (itens[id].qtd > 0) temItens = true; }
             
-            if(selectBairro.selectedIndex > 0) {
-                taxa = parseFloat(selectBairro.options[selectBairro.selectedIndex].getAttribute("data-taxa"));
+            if (!temItens) {
+                alert("Por favor, adicione pelo menos 1 item antes de avançar!");
+                return;
             }
             
-            let totalGeral = subtotal + taxa;
-            document.getElementById("total_geral").innerText = `Total Geral: R$ ${totalGeral.toFixed(2)} (Lanches + Entrega)`;
-        }
-
-        function enviarPedido() {
-            let nome = document.getElementById("nome_cliente").value.trim();
-            let bairroSelect = document.getElementById("bairro_cliente");
-            let endereco = document.getElementById("end_cliente").value.trim();
-            let pagamento = document.getElementById("pgto_cliente").value;
-
-            // Validações básicas
-            if (calcularSubtotal() === 0) { alert("Adicione pelo menos 1 item ao carrinho!"); return; }
-            if (!nome) { alert("Por favor, digite seu nome!"); return; }
-            if (bairroSelect.selectedIndex === 0) { alert("Por favor, selecione seu bairro!"); return; }
-            if (!endereco) { alert("Por favor, digite seu endereço!"); return; }
-
-            let bairro = bairroSelect.value;
+            localStorage.setItem("carrinho_aurelio", JSON.stringify(itens));
+                    
