@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xis do Aurélio - Cardápio Digital Oficial</title>
+    <title>Xis do Aurélio - Cardápio Completo</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: #f8f9fa; color: #333; padding-bottom: 110px; }
+        body { background-color: #f8f9fa; color: #333; padding-bottom: 120px; }
         header { background: linear-gradient(135deg, #e63946 0%, #c32f3a 100%); color: white; text-align: center; padding: 35px 20px; border-bottom: 6px solid #ffb703; box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
         header h1 { font-size: 30px; font-weight: 800; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
         header p { font-size: 14px; opacity: 0.9; margin-top: 5px; }
         .status { display: inline-block; background: #2a9d8f; color: white; padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: bold; margin-top: 12px; }
         .container { max-width: 600px; margin: 20px auto; padding: 0 15px; }
-        .categoria-titulo { font-size: 20px; font-weight: 800; color: #e63946; border-left: 6px solid #ffb703; padding-left: 12px; margin: 30px 0 15px 0; text-transform: uppercase; }
-        .produto { background: white; border-radius: 14px; padding: 18px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 12px rgba(0,0,0,0.03); border: 1px solid #edf2f7; }
+        .categoria-titulo { font-size: 18px; font-weight: 800; color: #e63946; border-left: 6px solid #ffb703; padding-left: 12px; margin: 35px 0 15px 0; text-transform: uppercase; background: #fff; padding-top: 6px; padding-bottom: 6px; border-radius: 0 8px 8px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .produto { background: white; border-radius: 14px; padding: 15px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 12px rgba(0,0,0,0.03); border: 1px solid #edf2f7; }
         .detalhes { flex: 1; padding-right: 15px; }
-        .nome { font-weight: bold; font-size: 17px; margin-bottom: 4px; color: #1a1a1a; }
-        .descricao { font-size: 13px; color: #667085; line-height: 1.4; }
-        .preco { font-weight: 800; color: #2a9d8f; font-size: 17px; margin-top: 8px; }
+        .nome { font-weight: bold; font-size: 16px; margin-bottom: 4px; color: #1a1a1a; }
+        .descricao { font-size: 12px; color: #667085; line-height: 1.4; }
+        .preco { font-weight: 800; color: #2a9d8f; font-size: 16px; margin-top: 6px; }
         .controle { display: flex; align-items: center; gap: 12px; background: #f1f3f5; padding: 6px 12px; border-radius: 30px; border: 1px solid #e9ecef; }
-        .btn-qtd { background: #e63946; color: white; border: none; width: 30px; height: 30px; border-radius: 50%; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold; }
-        .qtd { font-weight: bold; min-width: 20px; text-align: center; font-size: 15px; color: #212529; }
+        .btn-qtd { background: #e63946; color: white; border: none; width: 28px; height: 28px; border-radius: 50%; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .qtd { font-weight: bold; min-width: 20px; text-align: center; font-size: 14px; color: #212529; }
         footer { position: fixed; bottom: 0; left: 0; right: 0; background: white; padding: 20px; box-shadow: 0 -5px 20px rgba(0,0,0,0.08); display: flex; flex-direction: column; align-items: center; gap: 12px; z-index: 999; }
         .resumo-total { font-size: 18px; font-weight: 800; color: #1a1a1a; }
         .btn-avancar { background: #e63946; color: white; border: none; padding: 16px 30px; border-radius: 30px; font-size: 17px; font-weight: bold; width: 100%; max-width: 500px; cursor: pointer; text-align: center; text-decoration: none; box-shadow: 0 4px 15px rgba(230,57,70,0.4); display: block; }
@@ -34,137 +34,8 @@
         <span class="status">🟢 Faça seu Pedido Online</span>
     </header>
 
-    <div class="container">
-        
-        <!-- CATEGORIA: PROMOÇÕES -->
-        <div class="categoria-titulo">🔥 Promoções Bombásticas</div>
-        
-        <div class="produto">
-            <div class="detalhes">
-                <div class="nome">Combo 3 Xis Promocionais</div>
-                <div class="descricao">Escolha entre Carne, Calabresa ou Frango. Lanche grande e de qualidade!</div>
-                <div class="preco">R$ 69,00</div>
-            </div>
-            <div class="controle">
-                <button class="btn-qtd" onclick="alterarQtd('promo_3xis', -1)">-</button>
-                <span class="qtd" id="promo_3xis">0</span>
-                <button class="btn-qtd" onclick="alterarQtd('promo_3xis', 1)">+</button>
-            </div>
-        </div>
-
-        <div class="produto">
-            <div class="detalhes">
-                <div class="nome">Combo 3 Dogs Prensados</div>
-                <div class="descricao">Com 2 salsichas cada cachorro-quente. Prensado e quentinho.</div>
-                <div class="preco">R$ 48,00</div>
-            </div>
-            <div class="controle">
-                <button class="btn-qtd" onclick="alterarQtd('promo_3dogs', -1)">-</button>
-                <span class="qtd" id="promo_3dogs">0</span>
-                <button class="btn-qtd" onclick="alterarQtd('promo_3dogs', 1)">+</button>
-            </div>
-        </div>
-
-        <!-- CATEGORIA: OS XIS -->
-        <div class="categoria-titulo">🍔 Os Famosos Xis</div>
-        
-        <div class="produto">
-            <div class="detalhes">
-                <div class="nome">Xis Tudo (O Brabo)</div>
-                <div class="descricao">Iscas de carne, frango, bacon, ovo, coração, queijo, maionese, milho e ervilha.</div>
-                <div class="preco">R$ 32,00</div>
-            </div>
-            <div class="controle">
-                <button class="btn-qtd" onclick="alterarQtd('xis_tudo', -1)">-</button>
-                <span class="qtd" id="xis_tudo">0</span>
-                <button class="btn-qtd" onclick="alterarQtd('xis_tudo', 1)">+</button>
-            </div>
-        </div>
-
-        <div class="produto">
-            <div class="detalhes">
-                <div class="nome">Xis Bacon</div>
-                <div class="descricao">Bacon em cubos, hambúrguer, queijo derretido, maionese, milho, ervilha e salada.</div>
-                <div class="preco">R$ 29,90</div>
-            </div>
-            <div class="controle">
-                <button class="btn-qtd" onclick="alterarQtd('xis_bacon', -1)">-</button>
-                <span class="qtd" id="xis_bacon">0</span>
-                <button class="btn-qtd" onclick="alterarQtd('xis_bacon', 1)">+</button>
-            </div>
-        </div>
-
-        <div class="produto">
-            <div class="detalhes">
-                <div class="nome">Xis Coração</div>
-                <div class="descricao">Coração de frango bem temperado, hambúrguer, queijo, maionese e salada completa.</div>
-                <div class="preco">R$ 29,90</div>
-            </div>
-            <div class="controle">
-                <button class="btn-qtd" onclick="alterarQtd('xis_coracao', -1)">-</button>
-                <span class="qtd" id="xis_coracao">0</span>
-                <button class="btn-qtd" onclick="alterarQtd('xis_coracao', 1)">+</button>
-            </div>
-        </div>
-
-        <!-- CATEGORIA: DOCES E SOBREMESAS -->
-        <div class="categoria-titulo">🍰 Sobremesas e Açaí</div>
-
-        <div class="produto">
-            <div class="detalhes">
-                <div class="nome">Torta de Bolacha no Pote</div>
-                <div class="descricao">Finalizada com brigadeiro cremoso. Escolha com pedaços de Morango ou Abacaxi!</div>
-                <div class="preco">R$ 10,00</div>
-            </div>
-            <div class="controle">
-                <button class="btn-qtd" onclick="alterarQtd('torta_bolacha', -1)">-</button>
-                <span class="qtd" id="torta_bolacha">0</span>
-                <button class="btn-qtd" onclick="alterarQtd('torta_bolacha', 1)">+</button>
-            </div>
-        </div>
-
-        <div class="produto">
-            <div class="detalhes">
-                <div class="nome">Combo 2 Açaís de 500ml</div>
-                <div class="descricao">Acompanha Leite em pó, Leite condensado e Paçoca moída. Sabor que vicia!</div>
-                <div class="preco">R$ 36,00</div>
-            </div>
-            <div class="controle">
-                <button class="btn-qtd" onclick="alterarQtd('promo_acai500', -1)">-</button>
-                <span class="qtd" id="promo_acai500">0</span>
-                <button class="btn-qtd" onclick="alterarQtd('promo_acai500', 1)">+</button>
-            </div>
-        </div>
-
-        <!-- CATEGORIA: REFRIGERANTES -->
-        <div class="categoria-titulo">🥤 Refrigerantes Bem Gelados</div>
-
-        <div class="produto">
-            <div class="detalhes">
-                <div class="nome">Coca-Cola 2 Litros</div>
-                <div class="descricao">Refrigerante tamanho família trincando de gelado.</div>
-                <div class="preco">R$ 15,00</div>
-            </div>
-            <div class="controle">
-                <button class="btn-qtd" onclick="alterarQtd('coca_2l', -1)">-</button>
-                <span class="qtd" id="coca_2l">0</span>
-                <button class="btn-qtd" onclick="alterarQtd('coca_2l', 1)">+</button>
-            </div>
-        </div>
-
-        <div class="produto">
-            <div class="detalhes">
-                <div class="nome">Refri Lata 350ml</div>
-                <div class="descricao">Coca-Cola, Fanta, Guaraná ou Sprite (conforme estoque).</div>
-                <div class="preco">R$ 6,00</div>
-            </div>
-            <div class="controle">
-                <button class="btn-qtd" onclick="alterarQtd('refri_lata', -1)">-</button>
-                <span class="qtd" id="refri_lata">0</span>
-                <button class="btn-qtd" onclick="alterarQtd('refri_lata', 1)">+</button>
-            </div>
-        </div>
-
+    <div class="container" id="cardapio-itens">
+        <!-- Inserido dinamicamente via JavaScript para o código ficar limpo e rápido no celular -->
     </div>
 
     <footer>
@@ -173,13 +44,68 @@
     </footer>
 
     <script>
-        const itens = {
-            promo_3xis: { nome: "Combo 3 Xis Promocionais", preco: 69.00, qtd: 0 },
-            promo_3dogs: { nome: "Combo 3 Dogs Prensados", preco: 48.00, qtd: 0 },
-            xis_tudo: { nome: "Xis Tudo", preco: 32.00, qtd: 0 },
-            xis_bacon: { nome: "Xis Bacon", preco: 29.90, qtd: 0 },
-            xis_coracao: { nome: "Xis Coração", preco: 29.90, qtd: 0 },
-            torta_bolacha: { nome: "Torta de Bolacha no Pote", preco: 10.00, qtd: 0 },
-            promo_acai500: { nome: "Combo 2 Açaís de 500ml", preco: 36.00, qtd: 0 },
-            coca_2l: { nome: "Coca-Cola 2 Litros", preco: 15.00, qtd: 0 },
+        // BANCO DE DADOS COMPLETO EXTRAÍDO DAS FOTOS DO CLIENTE
+        const cardapioDados = [
+            { cat: "🔥 Promoções em Destaque", itens: [
+                { id: "p1", nome: "Promoção 3 Xis", desc: "De Carne, Calabresa ou Frango", preco: 69.00 },
+                { id: "p2", nome: "Promoção 3 Dogs Prensados", desc: "Com 2 Salsichas cada", preco: 48.00 }
+            ]},
+            { cat: "🍔 Os Famosos Xis", itens: [
+                { id: "x1", nome: "Xis Carne", desc: "Pão, maionese, salada, milho, ervilha, queijo e carne", preco: 24.90 },
+                { id: "x2", nome: "Xis Calabresa", desc: "Pão, maionese, salada, milho, ervilha, queijo e calabresa", preco: 24.90 },
+                { id: "x3", nome: "Xis Frango", desc: "Pão, maionese, salada, milho, ervilha, queijo e frango", preco: 24.90 },
+                { id: "x4", nome: "Xis Frango c/ Molho de Tomate", desc: "Frango suculento ao molho de tomate", preco: 26.00 },
+                { id: "x5", nome: "Xis Coração", desc: "Coração de frango bem temperado", preco: 29.90 },
+                { id: "x6", nome: "Xis Bacon", desc: "Muito bacon crocante e queijo derretido", preco: 29.90 },
+                { id: "x7", nome: "Xis Filé de Carne", desc: "Iscas de filé de carne bovina premium", preco: 29.90 },
+                { id: "x8", nome: "Xis Strogonoff Carne", desc: "Strogonoff de carne cremoso caseiro", preco: 29.90 },
+                { id: "x9", nome: "Xis Strogonoff Frango", desc: "Strogonoff de frango cremoso caseiro", preco: 29.90 },
+                { id: "x10", nome: "Xis Bagunça", desc: "A mistura braba de carnes e recheio duplo", preco: 39.90 }
+            ]},
+            { cat: "🥪 Mistos Especiais", itens: [
+                { id: "m1", nome: "Xis Frango c/ Bacon", desc: "Frango desfiado com cubos de bacon", preco: 29.90 },
+                { id: "m2", nome: "Xis Calabresa c/ Frango", desc: "Calabresa acebolada combinada com frango", preco: 29.90 },
+                { id: "m3", nome: "Xis Carne c/ Frango", desc: "Duas proteínas: carne e frango", preco: 29.90 },
+                { id: "m4", nome: "Xis Carne Duplo", desc: "Dois hambúrgueres com muito queijo", preco: 29.90 },
+                { id: "m5", nome: "Xis Coração c/ Frango", desc: "Coração de frango com frango desfiado", preco: 29.90 }
+            ]},
+            { cat: "🌭 Dogs Prensados (2 Salsichas)", itens: [
+                { id: "dp1", nome: "Dog 2 Salsichas Prensado", desc: "Tradicional prensado na chapa", preco: 17.00 },
+                { id: "dp2", nome: "Dog Coração Prensado", desc: "Coração de frango com salsicha", preco: 23.00 },
+                { id: "dp3", nome: "Dog Frango Prensado", desc: "Frango desfiado prensado", preco: 18.00 },
+                { id: "dp4", nome: "Dog Calabresa Prensado", desc: "Calabresa picada prensada", preco: 18.00 },
+                { id: "dp5", nome: "Dog Entrevero Prensado", desc: "Mix completo de carnes na chapa", preco: 25.00 },
+                { id: "dp6", nome: "Dog Filé de Carne Prensado", desc: "Iscas de filé prensadas", preco: 25.00 },
+                { id: "dp7", nome: "Dog Strogonoff Carne", desc: "Cremoso strogonoff de carne", preco: 25.00 },
+                { id: "dp8", nome: "Dog Strogonoff Frango", desc: "Cremoso strogonoff de frango", preco: 25.00 },
+                { id: "dp9", nome: "Dog 2 Sabores Prensado", desc: "Escolha suas duas carnes favoritas", preco: 25.00 },
+                { id: "dp10", nome: "Dog Chocolate Prensado", desc: "Dog doce especial de chocolate", preco: 18.00 }
+            ]},
+            { cat: "🌭 Dogs Abertos Especiais", itens: [
+                { id: "da1", nome: "Dog Aberto 2 Salsichas", desc: "No prato com molho e batata palha", preco: 25.00 },
+                { id: "da2", nome: "Dog Aberto Calabresa", desc: "Calabresa picada com molho especial", preco: 25.00 },
+                { id: "da3", nome: "Dog Aberto Frango", desc: "Frango desfiado com molho e temperos", preco: 25.00 },
+                { id: "da4", nome: "Dog Aberto Coração", desc: "Coração de frango com tempero da casa", preco: 29.00 },
+                { id: "da5", nome: "Dog Aberto Strogonoff Carne", desc: "Strogonoff de carne bovina no pão aberto", preco: 29.00 },
+                { id: "da6", nome: "Dog Aberto Strogonoff Frango", desc: "Strogonoff de frango no pão aberto", preco: 29.00 },
+                { id: "da7", nome: "Dog Aberto Entrevero", desc: "O autêntico entrevero gaúcho aberto", preco: 29.00 },
+                { id: "da8", nome: "Dog Aberto Filé", desc: "Iscas de filé premium aceboladas no pão", preco: 29.00 },
+                { id: "da9", nome: "Dog Aberto 2 Sabores", desc: "Combine duas carnes no seu dog aberto", preco: 29.00 }
+            ]},
+            { cat: "🍟 Batatas Fritas Crocantes", itens: [
+                { id: "f1", nome: "Batata Frita Pequena", desc: "Porção individual sequinha", preco: 18.00 },
+                { id: "f2", nome: "Batata Frita Grande", desc: "Porção tamanho família para compartilhar", preco: 23.00 },
+                { id: "f3", nome: "Batata Pequena c/ Bacon", desc: "Batata frita com bacon crocante", preco: 29.00 },
+                { id: "f4", nome: "Batata Grande c/ Bacon", desc: "Porção grande com muito bacon por cima", preco: 33.00 }
+            ]},
+            { cat: "📐 Pastéis Fritos na Hora", itens: [
+                { id: "pas1", nome: "Pastel de Carne", desc: "Recheio tradicional de carne moída temperada", preco: 15.00 },
+                { id: "pas2", nome: "Pastel de Calabresa", desc: "Calabresa moída com temperos", preco: 15.00 },
+                { id: "pas3", nome: "Pastel de Frango", desc: "Frango desfiado suculento", preco: 15.00 },
+                { id: "pas4", nome: "Pastel Presunto e Queijo", desc: "Clássico queijo derretido com presunto", preco: 15.00 },
+                { id: "pas5", nome: "Pastel de Queijo", desc: "Muito queijo derretido e temperado", preco: 15.00 },
+                { id: "pas6", nome: "Pastel de Entrevero", desc: "Mix de carnes dentro do pastel", preco: 21.00 },
+                { id: "pas7", nome: "Pastel de Coração", desc: "Coração de frango picadinho", preco: 21.00 },
+                { id: "pas8", nome: "Pastel de Filé de Carne", desc: "Iscas de filé bovino picadas", preco: 21.00 },
+                { id: "pas9", nome: "Pastel de Strogonoff", desc: "Strogonoff cremoso dentro do pastel", preco: 22.00 },
         
