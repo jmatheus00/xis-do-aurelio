@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -10,24 +11,17 @@
         header { background: #e63946; color: white; text-align: center; padding: 25px 20px; border-bottom: 6px solid #ffb703; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
         header h1 { font-size: 24px; font-weight: bold; }
         .container { max-width: 600px; margin: 20px auto; padding: 0 15px; }
-        
         .card-secao { background: white; border-radius: 14px; padding: 22px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); border: 1px solid #ebedf0; }
-        .card-secao h3 { margin-bottom: 15px; color: #1a1a1a; font-size: 18px; border-bottom: 2px solid #f1f3f5; padding-bottom: 10px; display: flex; align-items: center; gap: 8px; }
-        
-        .item-revisar { display: flex; justify-content: space-between; font-size: 15px; margin-bottom: 10px; color: #4a5568; background: #f8f9fa; padding: 8px 12px; border-radius: 8px; }
-        .item-revisar span:first-child { font-weight: 600; }
-        
+        .card-secao h3 { margin-bottom: 15px; color: #1a1a1a; font-size: 18px; border-bottom: 2px solid #f1f3f5; padding-bottom: 10px; }
+        .item-revisar { display: flex; justify-content: space-between; font-size: 15px; margin-bottom: 10px; color: #4a5568; background: #f8f9fa; padding: 8px 12px; border-radius: 8px; font-weight: 600; }
         .campo { margin-bottom: 16px; }
         .campo label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: #4a5568; }
-        .campo input, .campo select { width: 100%; padding: 12px 14px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 15px; outline: none; transition: 0.2s; background-color: #fff; }
-        .campo input:focus, .campo select:focus { border-color: #e63946; box-shadow: 0 0 0 3px rgba(230,57,70,0.1); }
-        
+        .campo input, .campo select { width: 100%; padding: 12px 14px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 15px; outline: none; }
         footer { position: fixed; bottom: 0; left: 0; right: 0; background: white; padding: 20px; box-shadow: 0 -5px 20px rgba(0,0,0,0.08); display: flex; flex-direction: column; align-items: center; gap: 12px; z-index: 999; }
         .total-geral { font-size: 18px; font-weight: 800; color: #1a1a1a; }
         .botoes-fim { display: flex; gap: 12px; width: 100%; max-width: 500px; }
-        .btn-voltar { background: #e2e8f0; color: #475569; border: none; padding: 16px 20px; border-radius: 30px; font-size: 16px; font-weight: bold; cursor: pointer; text-decoration: none; text-align: center; transition: 0.2s; }
-        .btn-enviar { background: #25D366; color: white; border: none; padding: 16px 25px; border-radius: 30px; font-size: 16px; font-weight: bold; flex: 1; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(37,211,102,0.3); font-weight: bold; }
-        .btn-enviar:active { background: #128C7E; transform: scale(0.98); }
+        .btn-voltar { background: #e2e8f0; color: #475569; border: none; padding: 16px 20px; border-radius: 30px; font-size: 16px; font-weight: bold; text-decoration: none; text-align: center; }
+        .btn-enviar { background: #25D366; color: white; border: none; padding: 16px 25px; border-radius: 30px; font-size: 16px; font-weight: bold; flex: 1; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(37,211,102,0.3); }
     </style>
 </head>
 <body>
@@ -37,13 +31,11 @@
     </header>
 
     <div class="container">
-        <!-- Revisão dos itens escolhidos -->
         <div class="card-secao">
-            <h3>🛒 Seus Lanches Escolhidos</h3>
+            <h3>🛒 Seus Itens Escolhidos</h3>
             <div id="lista_itens_revisar"></div>
         </div>
 
-        <!-- Formulário de Dados -->
         <div class="card-secao">
             <h3>📋 Informações para Entrega</h3>
             <div class="campo">
@@ -51,7 +43,7 @@
                 <input type="text" id="nome_cliente" placeholder="Ex: Lucas Silva">
             </div>
             <div class="campo">
-                <label for="bairro_cliente">Selecione seu Bairro (Taxa de Moto):</label>
+                <label for="bairro_cliente">Selecione seu Bairro (Taxa Tele):</label>
                 <select id="bairro_cliente" onchange="calcularTotalFinal()">
                     <option value="" data-taxa="0">Escolha o local de entrega...</option>
                     <option value="Parque Índio Jari" data-taxa="5.00">Parque Índio Jari (R\$ 5,00)</option>
@@ -61,15 +53,15 @@
                 </select>
             </div>
             <div class="campo">
-                <label for="end_cliente">Rua, Número e Complemento:</label>
-                <input type="text" id="end_cliente" placeholder="Ex: Rua das Flores, 450 - Casa de esquina">
+                <label for="end_cliente">Rua, Número e Referência:</label>
+                <input type="text" id="end_cliente" placeholder="Ex: Rua das Flores, 450 - Perto do mercado">
             </div>
             <div class="campo">
                 <label for="pgto_cliente">Como deseja pagar?</label>
                 <select id="pgto_cliente">
                     <option value="Pix">Pix (Chave enviada no Whats)</option>
-                    <option value="Cartão de Crédito/Débito">Cartão (Levar Maquininha)</option>
                     <option value="Dinheiro">Dinheiro</option>
+                    <option value="Cartão de Crédito/Débito">Cartão (Levar Maquininha)</option>
                 </select>
             </div>
         </div>
@@ -113,7 +105,7 @@
                 taxa = parseFloat(selectBairro.options[selectBairro.selectedIndex].getAttribute("data-taxa"));
             }
             let total = subtotalLanches + taxa;
-            document.getElementById("display_total_final").innerText = `Total Geral: R$ ${total.toFixed(2)} (Lanches + Moto)`;
+            document.getElementById("display_total_final").innerText = `Total Geral: R$ ${total.toFixed(2)} (Lanches + Tele)`;
         }
 
         function voltar() {
@@ -133,7 +125,7 @@
 
             let bairro = bairroSelect.value;
             let taxa = parseFloat(bairroSelect.options[bairroSelect.selectedIndex].getAttribute("data-taxa"));
-            let telefone = "5551991925746"; // WhatsApp Oficial do Xis do Aurélio
+            let telefone = "5551991925746";
 
             let texto = `*🍔 NOVO PEDIDO ONLINE - XIS DO AURÉLIO*\n\n`;
             texto += `*👤 CLIENTE:* ${nome}\n`;
@@ -148,10 +140,10 @@
                 }
             }
 
-            texto += `\n*💵 DETALHES DOS VALORES:*`;
-            texto += `\nSubtotal Lanches: R$ ${subtotalLanches.toFixed(2)}`;
-            texto += `\nTaxa de Entrega: R$ ${taxa.toFixed(2)}`;
-            texto += `\n*TOTAL GERAL DO PEDIDO:* R$ ${(subtotalLanches + taxa).toFixed(2)}`;
+            texto += `\n*💵 VALORES:*`;
+            texto += `\nSubtotal: R$ ${subtotalLanches.toFixed(2)}`;
+            texto += `\nTele-entrega: R$ ${taxa.toFixed(2)}`;
+            texto += `\n*TOTAL DO PEDIDO:* R$ ${(subtotalLanches + taxa).toFixed(2)}`;
 
             window.open(`https://whatsapp.com{telefone}&text=${encodeURIComponent(texto)}`, '_blank');
         }
